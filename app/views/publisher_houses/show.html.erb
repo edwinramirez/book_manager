@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @publisher_house.name %>
+</p>
+
+<%= link_to 'Edit', edit_publisher_house_path(@publisher_house), class:'btn btn-info' %> |
+<%= link_to 'Destroy', @publisher_house, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>  |
+<%= link_to 'Cancel', publisher_houses_path, class:'btn btn-default' %>

@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Publisher Houses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @publisher_houses.each do |publisher_house| %>
+      <tr>
+        <td><%= link_to publisher_house.name, publisher_house %></td>
+        <td><%= link_to 'Destroy', publisher_house, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Publisher house', new_publisher_house_path, class:'btn btn-success' %>  |
+<%= link_to 'Back to Main Menu', root_path, class:'btn btn-default' %>

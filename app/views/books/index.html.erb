@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Books</h1>
+
+<%= form_tag(books_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Books or Publisher" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% if @books.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Cover</th>
+        <th>Publisher House</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= link_to book.title, book %></td>
+          <td>
+            <% if book.cover.blank? %>
+                No cover availble
+            <% else %>
+                <img class="cover_container" src="<%= book.cover %>"/>
+            <% end %>
+          </td>
+          <td><%= book.publisher_house ? book.publisher_house.name : 'None' %></td>
+          <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are no Books nor Publishers named like <%= params[:search] %>.</p>
+<% end %>
+<br>
+
+<%= link_to 'New Book', new_book_path, class:'btn btn-success' %>  |
+<%= link_to 'Back to Main Menu', root_path, class:'btn btn-default' %>

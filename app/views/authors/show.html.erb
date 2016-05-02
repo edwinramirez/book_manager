@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @author.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @author.last_name %>
+</p>
+
+<p>
+  <strong>Birthdate:</strong>
+  <%= @author.birthdate %>
+</p>
+
+<%= link_to 'Edit', edit_author_path(@author), class:'btn btn-info' %> |
+<%= link_to 'Destroy', @author, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>  |
+<%= link_to 'Cancel', authors_path, class:'btn btn-default' %>
