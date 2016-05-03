@@ -29,9 +29,11 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
-
+    author_ids = book_params[:author_ids]
+    author_ids.shift
+    
     respond_to do |format|
-      if @book.save
+      if @book.save && (@book.authors << Author.where(author_ids))
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else
@@ -73,6 +75,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :pages, :cover, :published_at)
+      params.require(:book).permit(:title, :pages, :cover, :published_at, :publisher_house_id, author_ids: [])
     end
 end

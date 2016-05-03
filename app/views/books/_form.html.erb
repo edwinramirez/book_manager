@@ -24,6 +24,16 @@
     <%= f.text_field :cover %>
   </div>
   <div class="field">
+    <%= f.label :author, 'Author(s)' %><br>
+    <% options = Author.order(:first_name, :last_name).collect { |a| [ a.first_name+' '+a.last_name, a.id ] } %>
+    <%= f.select(:author_ids, options, {}, { multiple: true, size: 10 }) %>
+  </div>
+  <div class="field">
+    <%= f.label :publisher_house %><br>
+    <% options = PublisherHouse.order(:name).collect {|p| [ p.name, p.id ] } %>
+    <%= f.select(:publisher_house_id, options, { include_blank: 'None', prompt: 'Select Publisher House' }) %>
+  </div>
+  <div class="field">
     <%= f.label :published_at %><br>
     <%= f.date_select :published_at %>
   </div>

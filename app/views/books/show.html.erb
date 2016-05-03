@@ -10,9 +10,10 @@
   <%= @book.pages %>
 </p>
 
+
 <p>
-  <strong>Cover:</strong>
-  <%= @book.cover %>
+  <strong>Publisher House:</strong>
+  <%= @book.publisher_house ? @book.publisher_house.name : 'No Publisher House' %>
 </p>
 
 <p>
@@ -20,6 +21,14 @@
   <%= @book.published_at %>
 </p>
 
+<p>
+  <strong>Cover:</strong>
+	<% if @book.cover.blank? %>
+      No cover availble
+  <% else %>
+      <img class="cover_container" src="<%= @book.cover %>"/>
+  <% end %>
+</p>
 <%= link_to 'Edit', edit_book_path(@book), class:'btn btn-info' %> |
 <%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>  |
 <%= link_to 'Cancel', books_path, class:'btn btn-default' %>
