@@ -15,6 +15,13 @@
   <%= @author.birthdate %>
 </p>
 
+<p>
+  <strong>Books:</strong>
+  <%	@author.books.each do |b| %>
+  			<p><%= link_to b.title, b %></p>
+  <%	end %>
+</p>
+
 <%= link_to 'Edit', edit_author_path(@author), class:'btn btn-info' %> |
 <%= link_to 'Destroy', @author, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>  |
 <%= link_to 'Cancel', authors_path, class:'btn btn-default' %>

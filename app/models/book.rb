@@ -3,7 +3,7 @@ class Book < ActiveRecord::Base
 	has_many :authors, through: :book_by_authors, dependent: :destroy
 	belongs_to :publisher_house
 
-	validates :title, :pages, :published_at, presence: true
+	validates :title, :pages, :published_at, :author_ids, presence: true
 	validates :title, length: {in: 2..150}
 	validates :pages, numericality: {
 		only_integer: true,

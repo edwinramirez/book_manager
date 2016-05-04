@@ -33,7 +33,7 @@ class BooksController < ApplicationController
     author_ids.shift
     
     respond_to do |format|
-      if @book.save && (@book.authors << Author.where(author_ids))
+      if @book.save && @book.authors << Author.where(author_ids)
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else

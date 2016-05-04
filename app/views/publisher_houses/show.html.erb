@@ -5,6 +5,13 @@
   <%= @publisher_house.name %>
 </p>
 
+<p>
+  <strong>Available Books:</strong>
+  <%	@publisher_house.books.each do |b| %>
+  			<p><%= link_to b.title, b %></p>
+  <%	end %>
+</p>
+
 <%= link_to 'Edit', edit_publisher_house_path(@publisher_house), class:'btn btn-info' %> |
 <%= link_to 'Destroy', @publisher_house, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>  |
 <%= link_to 'Cancel', publisher_houses_path, class:'btn btn-default' %>
